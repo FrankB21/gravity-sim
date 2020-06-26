@@ -1,6 +1,10 @@
 #include <iostream>
+#include <string>
+
+#include "spdlog/spdlog.h"
 
 int main()
 {
-    std::cout << "Hello, world!\n";
+    auto logger = spdlog::default_logger();
+    logger->info("Logger initialized!");
 }
