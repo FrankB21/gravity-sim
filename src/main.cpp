@@ -18,14 +18,18 @@
 #include <SFML/Graphics.hpp>
 
 #include "spdlog/spdlog.h"
+#include "glm.hpp"
 
 int main()
 {
     auto logger = spdlog::default_logger();
     logger->info("Logger initialized!");
 
+    glm::vec2 pos = { 10, 50 };
+
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape  shape(100.f);
+    shape.setPosition(pos.x, pos.y);
     shape.setFillColor(sf::Color::Green);
 
     while (window.isOpen())

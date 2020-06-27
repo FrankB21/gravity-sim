@@ -22,8 +22,12 @@ add_executable(gravity_sim ${GS_SOURCES})
 
 add_subdirectory("vendor/spdlog")
 target_link_libraries(gravity_sim PUBLIC spdlog)
+add_subdirectory("vendor/glm")
+target_link_libraries(gravity_sim PUBLIC glm)
+
 target_link_libraries(gravity_sim PUBLIC "sfml-graphics")
 target_link_libraries(gravity_sim PUBLIC "sfml-window")
 target_link_libraries(gravity_sim PUBLIC "sfml-system")
 
 target_include_directories(gravity_sim PUBLIC "vendor/spdlog/include")
+target_include_directories(gravity_sim PUBLIC "vendor/glm/glm")
