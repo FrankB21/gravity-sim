@@ -17,14 +17,16 @@
 #include "DisplayManager.hpp"
 
 
-DisplayManager::DisplayManager(const sf::VideoMode &videoMode,
-    const std::string &                             title,
-    bool                                            fullscreen,
-    const sf::ContextSettings &                     settings)
-    : m_Window(videoMode,
-        title,
-        (fullscreen) ? sf::Style::Fullscreen : sf::Style::Default,
-        settings)
+DisplayManager::DisplayManager(
+    const sf::VideoMode &      videoMode,
+    const std::string &        title,
+    bool                       fullscreen,
+    const sf::ContextSettings &settings)
+    : m_Window(
+          videoMode,
+          title,
+          (fullscreen) ? sf::Style::Fullscreen : sf::Style::Default,
+          settings)
 {
     m_Window.setVerticalSyncEnabled(true);
 }

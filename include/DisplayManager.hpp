@@ -21,11 +21,14 @@
 class DisplayManager
 {
 public:
-    DisplayManager(const sf::VideoMode &videoMode, const std::string &title,
-            bool fullscreen, const sf::ContextSettings &settings);
+    DisplayManager(
+        const sf::VideoMode &      videoMode,
+        const std::string &        title,
+        bool                       fullscreen,
+        const sf::ContextSettings &settings);
 
     [[nodiscard]] inline bool isOpen() const { return m_Window.isOpen(); }
-    inline void clear() { m_Window.clear(); }
+    inline void               clear() { m_Window.clear(); }
 
     void pollEvents();
     void render();

@@ -30,12 +30,14 @@ int main()
 
     const auto videoMode = sf::VideoMode::getDesktopMode();
 
-    DisplayManager manager(videoMode,
+    DisplayManager manager(
+        videoMode,
         Config::WIN_TITLE,
         Config::IS_FULLSCREEN,
         Config::getContextSettings());
     logger->info("Created DisplayManager");
-    logger->trace(R"(
+    logger->trace(
+        R"(
         DisplayManager:
         Mode:       {}, {}
         AA:         {}
