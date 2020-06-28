@@ -15,7 +15,8 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(gravity_sim CXX)
-set(CXX_STANDARD_REQUIRED CXX_17)
+set(CXX_STANDARD CXX_17)
+set(CXX_STANDARD_REQUIRED ON)
 
 set(GS_SOURCES "src/main.cpp")
 add_executable(gravity_sim ${GS_SOURCES})
