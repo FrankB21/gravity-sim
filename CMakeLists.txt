@@ -18,8 +18,10 @@ project(gravity_sim CXX)
 set(CXX_STANDARD CXX_17)
 set(CXX_STANDARD_REQUIRED ON)
 
-set(GS_SOURCES "src/main.cpp")
+set(GS_SOURCES "src/main.cpp" "src/DisplayManager.cpp")
 add_executable(gravity_sim ${GS_SOURCES})
+
+include_directories("${CMAKE_SOURCE_DIR}/include")
 
 add_subdirectory("vendor/spdlog")
 target_link_libraries(gravity_sim PUBLIC spdlog)

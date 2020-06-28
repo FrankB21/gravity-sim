@@ -20,30 +20,42 @@
 #include "spdlog/spdlog.h"
 #include "glm.hpp"
 
+#include "DisplayManager.hpp"
+#include "Config.hpp"
+
 int main()
 {
     auto logger = spdlog::default_logger();
     logger->info("Logger initialized!");
 
-    glm::vec2 pos = { 10, 50 };
+    const auto videoMode = sf::VideoMode::getDesktopMode();
 
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape  shape(100.f);
-    shape.setPosition(pos.x, pos.y);
-    shape.setFillColor(sf::Color::Green);
+    DisplayManager manager(videoMode,
+        Config::WIN_TITLE,
+        Config::IS_FULLSCREEN,
+        Config::getContextSettings());
+    logger->info("Created DisplayManager");
+    logger->trace(R"(
+        DisplayManager:
+        Mode:       {}, {}
+        AA:         {}
+        GL Version  {}.{}
+        )",
+        videoMode.width,
+        videoMode.height,
+        Config::getContextSettings().antialiasingLevel,
+        Config::getContextSettings().majorVersion,
+        Config::getContextSettings().minorVersion);
 
-    while (window.isOpen())
+    while (manager.isOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+        manager.pollEvents();
+        logger->trace("Polled events");
 
-        window.clear();
-        window.draw(shape);
-        window.display();
+        manager.clear();
+        logger->trace("Cleared screen");
+        manager.render();
+        logger->trace("Rendered screen");
     }
 
     return 0;
