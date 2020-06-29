@@ -36,7 +36,20 @@ void DisplayManager::pollEvents()
     sf::Event event;
     while (m_Window.pollEvent(event))
     {
-        if (event.type == sf::Event::Closed) m_Window.close();
+        switch (event.type)
+        {
+        case sf::Event::Closed:
+            m_Window.close();
+            break;
+        case sf::Event::KeyReleased:
+            if (event.key.code == sf::Keyboard::Escape)
+            {
+                m_Window.close();
+                break;
+            }
+        default:
+            break;
+        }
     }
 }
 
