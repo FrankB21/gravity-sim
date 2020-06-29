@@ -18,7 +18,10 @@ project(gravity_sim CXX)
 set(CXX_STANDARD CXX_17)
 set(CXX_STANDARD_REQUIRED ON)
 
-set(GS_SOURCES "src/main.cpp" "src/DisplayManager.cpp")
+set(GS_SOURCES
+    "${CMAKE_SOURCE_DIR}/src/main.cpp"
+    "${CMAKE_SOURCE_DIR}/src/DisplayManager.cpp"
+)
 add_executable(gravity_sim ${GS_SOURCES})
 
 include_directories("${CMAKE_SOURCE_DIR}/include")
@@ -32,5 +35,5 @@ target_link_libraries(gravity_sim PUBLIC "sfml-graphics")
 target_link_libraries(gravity_sim PUBLIC "sfml-window")
 target_link_libraries(gravity_sim PUBLIC "sfml-system")
 
-target_include_directories(gravity_sim PUBLIC "vendor/spdlog/include")
-target_include_directories(gravity_sim PUBLIC "vendor/glm/glm")
+target_include_directories(gravity_sim PUBLIC "${CMAKE_SOURCE_DIR}/vendor/spdlog/include")
+target_include_directories(gravity_sim PUBLIC "${CMAKE_SOURCE_DIR}/vendor/glm/glm")
